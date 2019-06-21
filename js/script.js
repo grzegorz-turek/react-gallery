@@ -1,6 +1,30 @@
 'use strict';
 (function(){
 
+    var GalleryItem = React.createClass({
+        propTypes: {
+            image: React.PropTypes.object.isRequired,
+        },
+
+        render: function() {
+            return (
+                React.createElement('div', {},
+                    React.createElement('h2', {}, this.props.image.name),
+                    React.createElement('img', {src: this.props.image.src})
+                )
+            )
+        },
+    });
+
+    var imagesSet = {
+        name: 'Kotek',
+        src: 'http://imgur.com/n8OYCzR.png'
+    };
+
+    var element = React.createElement(GalleryItem, {image: imagesSet});
+    ReactDOM.render(element, document.getElementById('app'));
+
+    /*
     var movies = [
         {
             id: 1,
@@ -32,7 +56,7 @@
         return React.createElement('li', {key: movie.id},
             React.createElement('h2', {}, movie.title),
             React.createElement('p', {}, movie.desc),
-            React.createElement('img', {src:movie.poster, alt:"movie poster", width:"200"})
+            React.createElement('img', {src:movie.poster, alt:'movie poster', width:'200'})
           );
       });
 
@@ -43,52 +67,6 @@
         );
 
     ReactDOM.render(element, document.getElementById('app'));
-
-    /*
-    // ------------------------------------------- 1. NOT WORKING - BEGINNING -------------------------------------------
-    var element =
-        React.createElement('div', {},
-            React.createElement('h1', {}, 'Lista filmów'),
-            React.createElement('ul', {},
-                movies.forEach(function(element) {
-                    console.log(element.title); // WORKING OK
-                    console.log(element.desc); // WORKING OK
-                    createRecord(element.title, element.desc); // NOT WORKING, WTF?
-                })
-            )
-        );
-    ReactDOM.render(element, document.getElementById('app'));
-
-    function createRecord(filmTitle, filmDesc) {
-        return React.createElement('li', {},
-            React.createElement('h2', {}, filmTitle),
-            React.createElement('p', {}, filmDesc)
-        );
-    }
-    // ------------------------------------------- 1. NOT WORKING - END -------------------------------------------
-    */
-
-    /*
-    // ------------------------------------------- 2. NOT WORKING - BEGINNING -------------------------------------------
-    var element =
-        React.createElement('div', {},
-            React.createElement('h1', {}, 'Lista filmów'),
-            React.createElement('ul', {},
-                for(var i = 0; i < movies.length; i++) { // NOT WORKING, WHY?
-                    createRecord(movies[i].title, movies[i].desc); // NOT WORKING, WHY?
-                } // NOT WORKING, WHY?
-                //createRecord(movies[1].title, movies[1].desc); // IF REPLACES THREE LINES ABOVE IT WORKS, WTF?
-            )
-        );
-    ReactDOM.render(element, document.getElementById('app'));
-
-    function createRecord(filmTitle, filmDesc) {
-        return React.createElement('li', {},
-            React.createElement('h2', {}, filmTitle),
-            React.createElement('p', {}, filmDesc)
-        );
-    }
-    // ------------------------------------------- 2. NOT WORKING - END -------------------------------------------
     */
 
 })();

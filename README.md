@@ -1,0 +1,1 @@
+Reac exercise - Gallery: https://grzegorz-turek.github.io/react-gallery/
